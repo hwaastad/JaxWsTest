@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/JaxWsApi">
+   <!-- <Realm className="org.apache.catalina.realm.DataSourceRealm" 
+         dataSourceName="SG22DS" 
+         roleNameCol="name" 
+         userCredCol="password" 
+         userNameCol="email" 
+         userRoleTable="v_application_user_group" 
+         userTable="v_application_user_group"/>-->
+</Context>
