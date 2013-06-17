@@ -21,27 +21,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>no.datametrix</groupId>
-            <artifactId>SmartGuest-pomlib</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>no.datametrix</groupId>
-            <artifactId>SmartGuest-jpa</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>no.datametrix</groupId>
-            <artifactId>SmartGuest-lib</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>no.datametrix</groupId>
-            <artifactId>SmartGuest-ejb</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.myfaces.core</groupId>
             <artifactId>myfaces-api</artifactId>
         </dependency>
@@ -89,45 +68,60 @@
             <version>2.0.5</version>
             <scope>test</scope>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>JaxWs-ejb</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>JaxWs-lib</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
     <build>
+        <finalName>JaxWs-web</finalName>
         <plugins>
             <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.14.1</version>
-                    <configuration>
-                        <argLine>-XX:-UseSplitVerifier</argLine>
-                        <failIfNoTests>false</failIfNoTests>
-                        <childDelegation>true</childDelegation>
-                        <includes>
-                            <include>**/*Suite.java</include>
-                            <include>**/*Test.java</include>
-                            <include>**/*TestCase.java</include>
-                        </includes>
-                        <excludes>
-                            <exclude>**/*IntegrationSuite.java</exclude>
-                            <exclude>**/*IntegrationTest.java</exclude>
-                        </excludes>
-                        <forkCount>10</forkCount>
-                        <reuseForks>false</reuseForks>
-                    </configuration>
-                </plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.14.1</version>
+                <configuration>
+                    <argLine>-XX:-UseSplitVerifier</argLine>
+                    <failIfNoTests>false</failIfNoTests>
+                    <childDelegation>true</childDelegation>
+                    <includes>
+                        <include>**/*Suite.java</include>
+                        <include>**/*Test.java</include>
+                        <include>**/*TestCase.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/*IntegrationSuite.java</exclude>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
+                    <forkCount>10</forkCount>
+                    <reuseForks>false</reuseForks>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.openejb.maven</groupId>
                 <artifactId>tomee-maven-plugin</artifactId>
                 <version>1.6.0-SNAPSHOT</version>
                 <configuration>
-                    <!-- <systemVariables>
+                    <systemVariables>
                         <java.security.auth.login.config>${project.build.directory}/apache-tomee/conf/login.config</java.security.auth.login.config>
-                    </systemVariables>-->
-                    <context>ROOT</context>
+                    </systemVariables>
                     <tomeeClassifier>plus</tomeeClassifier>
+                    <libs>
+                        <lib>org.eclipse.persistence:eclipselink:2.4.1</lib>
+                        <lib>org.postgresql:postgresql:9.2-1003-jdbc4</lib>
+                        <lib>remove:openjpa-</lib>
+                    </libs>
                 </configuration>
             </plugin>
             <plugin>

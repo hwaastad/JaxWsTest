@@ -4,11 +4,13 @@
  */
 package org.waastad.service;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import org.waastad.ejb.BusinessBean;
 
 /**
  *
@@ -17,6 +19,8 @@ import javax.ws.rs.core.MediaType;
 @Path("/restservice")
 @Stateless
 public class RestBean {
+    
+    @EJB private BusinessBean businessBean;
 
     @GET
     @Produces({MediaType.TEXT_PLAIN})
