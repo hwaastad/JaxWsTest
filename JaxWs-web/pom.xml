@@ -116,12 +116,23 @@
                     <systemVariables>
                         <java.security.auth.login.config>${project.build.directory}/apache-tomee/conf/login.config</java.security.auth.login.config>
                     </systemVariables>
+                    <tomeeVersion>1.6.0-SNAPSHOT</tomeeVersion>
                     <tomeeClassifier>plus</tomeeClassifier>
                     <libs>
+                        <lib>mysql:mysql-connector-java:5.1.24</lib>
                         <lib>org.eclipse.persistence:eclipselink:2.4.1</lib>
                         <lib>org.postgresql:postgresql:9.2-1003-jdbc4</lib>
                         <lib>remove:openjpa-</lib>
                     </libs>
+                    <synchronization>
+                        <extensions>
+                            <extension>.ear</extension>
+                            <extension>.class</extension>
+                            <extension>.xhtml</extension>
+                            <extension>.js</extension>
+                        </extensions>
+                    </synchronization>
+                    <reloadOnUpdate>true</reloadOnUpdate>
                 </configuration>
             </plugin>
             <plugin>
