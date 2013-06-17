@@ -3,8 +3,11 @@
     <Realm className="org.apache.catalina.realm.CombinedRealm">
         
         <Realm className="org.apache.catalina.realm.JAASRealm"
-               appName="TestRealm"/>
+               appName="TestRealmLdap"
+               userClassNames="org.waastad.jaas.UserPrincipal"/>
         <Realm className="org.apache.catalina.realm.JAASRealm"
-               appName="TestRealmSQL"/>
+               appName="TestRealmSQL"
+               userClassNames="org.waastad.jaas.UserPrincipal"
+               roleClassNames="org.waastad.jaas.RolePrincipal"/>
     </Realm>
 </Context>

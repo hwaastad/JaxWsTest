@@ -59,7 +59,7 @@ public class WaastadLoginModule extends JndiLoginModule implements LoginModule {
                 // "admin" role
                 login = name;
                 userGroups = new ArrayList<>();
-                userGroups.add("admin");
+                userGroups.add("SuperAdminGroup");
                 return true;
             }
             throw new LoginException("Authentication failed");
